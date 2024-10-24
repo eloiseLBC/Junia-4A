@@ -52,8 +52,8 @@ jobs:
         run: echo ":@Azertyqsd82" | docker login -u "eloiselbc" --password-stdin
 
       - name: Tag Docker image for Docker Hub
-        run: docker tag myapp:latest eloiseLBC/myapp:latest  # Remplace "eloiseLBC" par ton identifiant Docker Hub
+        run: docker tag myapp:latest eloiselbc/myapp:latest  # Remplace "eloiseLBC" par ton identifiant Docker Hub
 
       - name: Push Docker image to Docker Hub
-        run: docker push eloiseLBC/myapp:latest
+        run: docker push eloiselbc/myapp:latest
 
