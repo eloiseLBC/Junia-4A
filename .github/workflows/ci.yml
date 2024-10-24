@@ -17,3 +17,20 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t myapp:latest .
+
+  deploy:
+    runs-on: self-hosted
+    needs: build  # Exécuter après le build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker registry
+        run: docker login localhost:5000 -u username -p password  # Remplace avec tes infos de connexion
+
+      - name: Pull Docker image from local registry
+        run: docker pull localhost:5000/myapp:latest
+
+      - name: Run Docker container
+        run: docker run -d -p 8080:80 localhost:5000/myapp:latest
+
