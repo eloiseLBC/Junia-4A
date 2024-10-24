@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+      - db
+
+  php:
+    image: php:7.4-fpm
+    volumes:
+      - .:/var/www/html
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: mdp
+      MYSQL_DATABASE: site
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
