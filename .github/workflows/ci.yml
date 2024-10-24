@@ -6,7 +6,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run PHP script
-        run: php -l my-file.php
+        run: php -l index.php
 
   build:
     runs-on: self-hosted
